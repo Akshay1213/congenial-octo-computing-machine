@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myLoginLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginback"
+    android:focusable="true"
+    tools:context="com.xoxytech.ostello.Login">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp">
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="100sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="0sp"
+                android:layout_weight="0"
+                android:src="@drawable/ostalologo" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="8dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/input_usernumber"
+                    android:layout_width="150sp"
+                    android:layout_height="25sp"
+                    android:background="@drawable/round"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:hint="Phone number"
+                    android:inputType="number"
+                    android:textSize="10dp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--<android.support.design.widget.TextInputLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:layout_marginBottom="8dp">-->
+            <!--<EditText android:id="@+id/editTextPassword"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:inputType="textPassword"-->
+            <!--android:hint="Password"/>-->
+            <!--</android.support.design.widget.TextInputLayout>-->
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
+                android:focusableInTouchMode="true"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/input_password"
+                    android:layout_width="150sp"
+                    android:layout_height="25sp"
+                    android:background="@drawable/round"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:hint="@string/prompt_password"
+                    android:imeActionId="@+id/login"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="10dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_login"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/regiterround"
+                android:paddingBottom="0dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="0dp"
+                android:text="Login"
+                android:textColor="@color/white"
+                android:textSize="7dp" />
+
+            <TextView
+                android:id="@+id/link_forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="10sp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="Forgot Password?"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/link_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="10sp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="0sp"
+                android:background="@drawable/noaccountround"
+                android:gravity="center"
+                android:text="@string/NoAccount"
+                android:textSize="7sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="8sp"
+                android:layout_marginTop="20sp"
+                android:src="@drawable/poweredby" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/layoutCheckInternet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/txtInternetConnection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:gravity="center"
+                android:text="No Internet Connection"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/btnRetry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtInternetConnection"
+                android:layout_gravity="center"
+                android:layout_marginLeft="140dp"
+                android:text="Retry" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

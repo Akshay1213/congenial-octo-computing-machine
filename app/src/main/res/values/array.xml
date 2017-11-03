@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="type">
+        <item>"Cot-basis"</item>
+        <item>"1BHK"</item>
+        <item>"2BHK"</item>
+        <item>"3BHK"</item>
+        <item>"PG"</item>
+    </array>
+
+    <array name="type_reg">
+        <item>"None"</item>
+        <item>"Cot-basis"</item>
+        <item>"1BHK"</item>
+        <item>"2BHK"</item>
+        <item>"3BHK"</item>
+        <item>"PG"</item>
+    </array>
+</resources>
