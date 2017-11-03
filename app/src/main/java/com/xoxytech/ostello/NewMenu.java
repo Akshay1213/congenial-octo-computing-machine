@@ -470,7 +470,7 @@ public class NewMenu extends Activity {
                     // Extract data from json and store into ArrayList
                     for (int i = 0; i < jArray.length(); i++) {
                         JSONObject json_data = jArray.getJSONObject(i);
-                        cities.add(new CitySuggetions(json_data.getString("city")));
+                        cities.add(new CitySuggetions(json_data.getString("city").replace('_', ' ')));
                     }
 
                     mSearchView.swapSuggestions(cities);
