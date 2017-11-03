@@ -129,40 +129,10 @@ public class NewMenu extends Activity {
         mRVhostelList.setAdapter(mAdapter);
         LinearLayoutManager llm = new LinearLayoutManager(NewMenu.this);
         mRVhostelList.setLayoutManager(llm);
-//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRVhostelList.getContext(),
-//                llm.getOrientation());
-//        mRVhostelList.addItemDecoration(dividerItemDecoration);
+
         mAdapter.notifyDataSetChanged();
 
 
-
-/*
-        mRVhostelList.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                TextView tv=(TextView)view.findViewById(R.id.hiddenid);
-
-//                Toast.makeText(NewMenu.this, "Card at " + position + " is clicked"+tv.getText(), Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(NewMenu.this, HostelDetails.class);
-
-//Create the bundle
-                Bundle bundle = new Bundle();
-
-//Add your data to bundle
-                bundle.putString("id", tv.getText().toString());
-
-//Add the bundle to the intent
-                i.putExtras(bundle);
-
-//Fire that second activity
-                startActivity(i);
-
-            }
-        }));
-*/
-
-
-        //Make call to AsyncTask
         final RelativeLayout relativeLayoutNoInternetCon = (RelativeLayout) findViewById(R.id.layouterror);
         Button btnRetry = (Button) findViewById(R.id.btnRetry);
         if (CheckInternet.checkinternet(getApplicationContext())) {
@@ -290,13 +260,7 @@ public class NewMenu extends Activity {
         });
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (!mSearchView.setSearchFocused(false)) {
-//
-//        }
-//
-//    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data1) {
@@ -583,7 +547,7 @@ public class NewMenu extends Activity {
                     Datahostel hostelData = new Datahostel();
                     hostelData.HostelImage = "http://ostallo.com/ostello/images/" + json_data.getString("hostel_id") + "/home.jpg";
                     Log.d("******->", "http://ostallo.com/ostello/images/" + json_data.getString("hostel_id") + "/home.jpg");
-                    hostelData.HostelName = json_data.getString("hostelname");
+                    hostelData.HostelName = json_data.getString("hostelname").replace("_"," ");
                     hostelData.HostelImage = hostelData.HostelImage.replace('_', ' ');
                     hostelData.catName = json_data.getString("category");
                     hostelData.type = json_data.getString("type");

@@ -434,7 +434,7 @@ public class HostelDetails extends AppCompatActivity implements OnMapReadyCallba
                         tmpstr.append(" " + hostelname[i]);
                     }
                     String text = "<font color='red'>" + hostelname[0] + " " + "</font>" + tmpstr;
-                    textViewhostelName.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
+                    textViewhostelName.setText(Html.fromHtml(text),TextView.BufferType.SPANNABLE);
 
                     textViewcategory.setText(json_data.getString("category"));
                     textViewType.setText(json_data.getString("type"));
