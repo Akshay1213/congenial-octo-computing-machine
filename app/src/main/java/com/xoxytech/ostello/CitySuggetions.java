@@ -29,7 +29,6 @@ public class CitySuggetions implements SearchSuggestion {
     };
     private String city;
     private boolean IsHistory = false;
-
     public CitySuggetions(String city) {//constructor
         this.city = city;
     }

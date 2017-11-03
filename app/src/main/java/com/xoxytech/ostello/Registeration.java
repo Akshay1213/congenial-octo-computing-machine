@@ -60,7 +60,6 @@ public class Registeration extends AppCompatActivity implements View.OnClickList
     private String username;
     private String password;
     private String phone;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

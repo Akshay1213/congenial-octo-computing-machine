@@ -16,6 +16,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:text="Are you sure you want to delete your account?"
+            android:textColor="@color/black"
             android:textSize="17dp" />
 
         <LinearLayout
@@ -29,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="150dp"
                 android:text="Yes"
+                android:textColor="@color/black"
                 android:textSize="15dp" />
 
             <TextView
@@ -37,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
                 android:text="No"
+                android:textColor="@color/black"
                 android:textSize="15dp" />
         </LinearLayout>
     </LinearLayout>

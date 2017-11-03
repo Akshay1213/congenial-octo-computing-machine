@@ -13,7 +13,6 @@ public class Login_to_continue extends AppCompatActivity {
 
     long back_pressed = 0;
     Toast toast;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

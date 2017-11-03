@@ -550,7 +550,6 @@ public class MainActivity extends AppCompatActivity
         });
 
     }
-
     private void fadeDimBackground(int from, int to, Animator.AnimatorListener listener) {
         ValueAnimator anim = ValueAnimator.ofInt(from, to);
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {

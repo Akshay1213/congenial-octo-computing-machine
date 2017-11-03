@@ -23,7 +23,6 @@
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/ic_menu_manage" />
-
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

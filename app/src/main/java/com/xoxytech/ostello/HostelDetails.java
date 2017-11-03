@@ -100,6 +100,7 @@ public class HostelDetails extends AppCompatActivity implements OnMapReadyCallba
             TextSliderView textSliderView = new TextSliderView(this);
             textSliderView.image("http://janaipackaging.com/ostello/images/" + id + "/" + i + ".jpg");
             Log.d("*******", "http://janaipackaging.com/ostello/images/" + id + "/" + i + ".jpg");
+
             sliderShow.addSlider(textSliderView);
         }
         textViewhostelName = (TextView) findViewById(R.id.textViewHostelname);
@@ -147,6 +148,7 @@ public class HostelDetails extends AppCompatActivity implements OnMapReadyCallba
                 if (!CheckInternet.checkinternet(getApplicationContext()))
                     Toast.makeText(HostelDetails.this, "Make sure you have Active Internet Connection", Toast.LENGTH_LONG).show();
                 else {
+
                     Log.e("nonsense", Config.ENQUIRY_URL + "?id=" + id);
                     LayoutInflater li = LayoutInflater.from(HostelDetails.this);
                     loading = ProgressDialog.show(HostelDetails.this, "Loading", "Please wait.....", false, false);
@@ -253,7 +255,6 @@ public class HostelDetails extends AppCompatActivity implements OnMapReadyCallba
 
         new AsyncFetch().execute();
     }
-
     @Override
     protected void onStop() {
         sliderShow.stopAutoCycle();

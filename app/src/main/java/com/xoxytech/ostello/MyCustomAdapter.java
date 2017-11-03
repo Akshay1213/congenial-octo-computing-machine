@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -82,6 +83,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         }
 
 
+
         //Handle TextView and display string from your list
         TextView listItemText = (TextView) view.findViewById(R.id.list_item_string);
         listItemText.setText(list.get(position));
@@ -106,78 +108,84 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
                /* Animation animation1 = AnimationUtils.loadAnimation(context.getApplicationContext(),
                         R.anim.bounce);
                 view.startAnimation(animation1);*/
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-
-                alertDialog.setMessage("Are you want to delete hostel?");
-                RequestQueue queue = Volley.newRequestQueue(context);
-
-                StringRequest getrequest = new StringRequest(Request.Method.GET, url + "?phone=" + number, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-
-                            jArray = new JSONArray(response);
-
-                            json_data = jArray.getJSONObject(position);
-
-                            hostel_id = json_data.getString("hostel_id");
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("Error.Response", error.toString());
-                        Intent intent = new Intent(context, ManageHostels.class);
-
-                        context.startActivity(intent);
-
-                    }
-                });
-                queue.add(getrequest);
-
-                alertDialog.setPositiveButton(
-                        "YES",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                RequestQueue queue1 = Volley.newRequestQueue(context);
-
-                                StringRequest postrequest = new StringRequest(Request.Method.POST, urldelete + "?hostel_id=" + hostel_id.trim(), new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-
-                                        Log.d("*****", urldelete + "?hostel_id=" + hostel_id.trim());
+                if (CheckInternet.checkinternet(context.getApplicationContext())) {
 
 
-                                    }
-                                }, new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        Log.d("***error", urldelete + "?hostel_id=" + hostel_id.trim());
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
+                    alertDialog.setMessage("Are you want to delete hostel?");
+                    RequestQueue queue = Volley.newRequestQueue(context);
 
-                                    }
-                                });
-                                queue1.add(postrequest);
-                                Activity a = (Activity) context;
-                                a.recreate();
+                    StringRequest getrequest = new StringRequest(Request.Method.GET, url + "?phone=" + number, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
 
-                                dialog.cancel();
+                            try {
 
+                                jArray = new JSONArray(response);
+
+                                json_data = jArray.getJSONObject(position);
+
+                                hostel_id = json_data.getString("hostel_id");
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        });
-                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                    }
-                });
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("Error.Response", error.toString());
+                            Intent intent = new Intent(context, ManageHostels.class);
 
-                alertDialog.show();
+                            context.startActivity(intent);
+
+                        }
+                    });
+                    queue.add(getrequest);
+
+                    alertDialog.setPositiveButton(
+                            "YES",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    RequestQueue queue1 = Volley.newRequestQueue(context);
+
+                                    StringRequest postrequest = new StringRequest(Request.Method.POST, urldelete + "?hostel_id=" + hostel_id.trim(), new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+
+                                            Log.d("*****", urldelete + "?hostel_id=" + hostel_id.trim());
+
+
+                                        }
+                                    }, new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Log.d("***error", urldelete + "?hostel_id=" + hostel_id.trim());
+
+
+                                        }
+                                    });
+                                    queue1.add(postrequest);
+                                    Activity a = (Activity) context;
+                                    a.recreate();
+
+                                    dialog.cancel();
+
+                                }
+                            });
+                    alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+
+                    alertDialog.show();
+                } else
+                    Toast.makeText(context, "Make sure you have Active Internet Connection", Toast.LENGTH_LONG).show();
+
 
 
             }
@@ -188,48 +196,52 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
                 Animation animation1 = AnimationUtils.loadAnimation(context.getApplicationContext(),
                         R.anim.bounce);
                 editBtn.startAnimation(animation1);
-
-                RequestQueue queue = Volley.newRequestQueue(context);
-
-                StringRequest getrequest = new StringRequest(Request.Method.GET, url + "?phone=" + number, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-
-                            jArray = new JSONArray(response);
-
-                            json_data = jArray.getJSONObject(position);
-
-                            data = json_data.getString("hostelname") + " | ";
-                            data += json_data.getString("category") + " | ";
-                            data += json_data.getString("vacancy") + " | ";
-                            data += json_data.getString("rate") + " | ";
-                            data += json_data.getString("address") + " |";
-                            data += json_data.getString("city") + " |";
-                            data += json_data.getString("type") + " |";
-                            data += json_data.getString("facilities") + " |";
-                            data += json_data.getString("hostel_id");
-                            hostel_id = json_data.getString("hostel_id");
+                if (CheckInternet.checkinternet(context.getApplicationContext())) {
 
 
-                            Intent intent = new Intent(context, ManageHostels2.class);
-                            intent.putExtra("data", data);
-                            context.startActivity(intent);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                    RequestQueue queue = Volley.newRequestQueue(context);
+
+                    StringRequest getrequest = new StringRequest(Request.Method.GET, url + "?phone=" + number, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            try {
+
+                                jArray = new JSONArray(response);
+
+                                json_data = jArray.getJSONObject(position);
+
+                                data = json_data.getString("hostelname") + " | ";
+                                data += json_data.getString("category") + " | ";
+                                data += json_data.getString("vacancy") + " | ";
+                                data += json_data.getString("rate") + " | ";
+                                data += json_data.getString("address") + " |";
+                                data += json_data.getString("city") + " |";
+                                data += json_data.getString("type") + " |";
+                                data += json_data.getString("facilities") + " |";
+                                data += json_data.getString("hostel_id");
+                                hostel_id = json_data.getString("hostel_id");
+
+
+                                Intent intent = new Intent(context, ManageHostels2.class);
+                                intent.putExtra("data", data);
+                                context.startActivity(intent);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
                         }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("Error.Response", error.toString());
 
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("Error.Response", error.toString());
-
-                    }
-                });
-                queue.add(getrequest);
-                notifyDataSetChanged();
+                        }
+                    });
+                    queue.add(getrequest);
+                    notifyDataSetChanged();
+                } else
+                    Toast.makeText(context, "Make sure you have Active Internet Connection", Toast.LENGTH_LONG).show();
 
             }
         });

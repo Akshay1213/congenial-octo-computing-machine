@@ -28,7 +28,6 @@
         </ImageView>
 
     </RelativeLayout>
-
     <RelativeLayout
         android:id="@+id/mainlayout"
         android:layout_width="match_parent"

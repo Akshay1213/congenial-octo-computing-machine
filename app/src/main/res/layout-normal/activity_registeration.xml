@@ -6,7 +6,6 @@
     android:layout_height="fill_parent"
     android:focusableInTouchMode="true"
     tools:context="com.xoxytech.ostello.Registeration">
-
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -125,7 +124,6 @@
                 android:gravity="center"
                 android:text="@string/alreadyhaveanAccount"
                 android:textSize="15sp" />
-
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"

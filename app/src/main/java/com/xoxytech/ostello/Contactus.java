@@ -73,21 +73,25 @@ public class Contactus extends AppCompatActivity {
                     msg += e1.getText() + "\n";
                 }
                 if (flag == 0) {
+                    if (CheckInternet.checkinternet(getApplicationContext())) {
 
-                    String[] to = {"ostallohostels@gmail.com"};
-                    Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("text/html");
-                    intent.putExtra(Intent.EXTRA_EMAIL, to);
-                    intent.putExtra(Intent.EXTRA_SUBJECT, "Contact Us");
-                    intent.putExtra(Intent.EXTRA_TEXT, msg);
 
-                    try {
-                        startActivity(Intent.createChooser(intent, "Send Email"));
-                        // Snackbar.make(findViewById(R.id.drawer_layout), "Mail sent", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                        Log.d("******", "Finished sending email...");
-                    } catch (android.content.ActivityNotFoundException ex) {
-                        Toast.makeText(Contactus.this, "Mail not sent", Toast.LENGTH_SHORT).show();
-                    }
+                        String[] to = {"ostallohostels@gmail.com"};
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/html");
+                        intent.putExtra(Intent.EXTRA_EMAIL, to);
+                        intent.putExtra(Intent.EXTRA_SUBJECT, "Contact Us");
+                        intent.putExtra(Intent.EXTRA_TEXT, msg);
+
+                        try {
+                            startActivity(Intent.createChooser(intent, "Send Email"));
+                            // Snackbar.make(findViewById(R.id.drawer_layout), "Mail sent", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                            Log.d("******", "Finished sending email...");
+                        } catch (android.content.ActivityNotFoundException ex) {
+                            Toast.makeText(Contactus.this, "Mail not sent", Toast.LENGTH_SHORT).show();
+                        }
+                    } else
+                        Toast.makeText(Contactus.this, "Make sure you have Active Internet Connection", Toast.LENGTH_LONG).show();
                    /* finally {
                         finish();
                     }*/
@@ -193,4 +197,3 @@ public class Contactus extends AppCompatActivity {
 
     }
 }
-

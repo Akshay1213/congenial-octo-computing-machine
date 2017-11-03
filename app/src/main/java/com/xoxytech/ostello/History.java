@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -29,7 +30,7 @@ import static com.xoxytech.ostello.MainActivity.READ_TIMEOUT;
 
 public class History extends AppCompatActivity {
 
-    RecyclerView HistoryList;
+    RecyclerView favouriteList;
     ArrayList<Datahostel> data;
     Adapterhostel adapterhostel;
     String phone = "";
@@ -37,13 +38,14 @@ public class History extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
-        HistoryList = (RecyclerView) findViewById(R.id.HistoryList);
+        setContentView(R.layout.activity_favourite);
+        favouriteList = (RecyclerView) findViewById(R.id.favouriteList);
+        ((TextView) (findViewById(R.id.txtregisterhostel))).setText("History");
         data = new ArrayList<>();
-        //  HistoryList.setVisibility(View.VISIBLE);
-        HistoryList.setLayoutManager(new LinearLayoutManager(History.this));
-        // adapterhostel = new Adapterhostel(History.this, data);
-//        HistoryList.setAdapter(adapterhostel);
+        //  favouriteList.setVisibility(View.VISIBLE);
+        favouriteList.setLayoutManager(new LinearLayoutManager(History.this));
+        // adapterhostel = new Adapterhostel(Favourite.this, data);
+//        favouriteList.setAdapter(adapterhostel);
         new AsyncFetchLoadHostels().execute();
     }
 
@@ -67,6 +69,8 @@ public class History extends AppCompatActivity {
         protected String doInBackground(String... params) {
             try {
 
+                // Enter URL address where your json file resides
+                // Even you can make call to php file which returns json data
                 SharedPreferences sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
                 String history = sp.getString("HISTORY", null);
                 url = new URL(Config.History_URL + "?hostel_ids=" + history);
@@ -130,15 +134,16 @@ public class History extends AppCompatActivity {
         protected void onPostExecute(String result) {
 
             //this method will be running on UI thread
-            Log.d("*******************", result);
-            pdLoading.dismiss();
-            data = new ArrayList<>();
             if (result.contains("no rows")) {
-                Toast.makeText(History.this, "No Recent History", Toast.LENGTH_LONG).show();
+                ((TextView) (findViewById(R.id.textViewError))).setText("No Recent History");
                 findViewById(R.id.textViewError).setVisibility(View.VISIBLE);
+                pdLoading.dismiss();
                 return;
             } else
                 findViewById(R.id.textViewError).setVisibility(View.INVISIBLE);
+            Log.d("*******************", result);
+            pdLoading.dismiss();
+            data = new ArrayList<>();
             try {
 
                 JSONArray jArray = new JSONArray(result);
@@ -163,12 +168,13 @@ public class History extends AppCompatActivity {
                 }
                 Log.d("Data", data.size() + "");
                 adapterhostel = new Adapterhostel(History.this, data);
-                HistoryList.setAdapter(adapterhostel);
+                favouriteList.setAdapter(adapterhostel);
                 adapterhostel.notifyDataSetChanged();
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(History.this, "Error " + e.toString(), Toast.LENGTH_LONG).show();
             }
+
         }
     }
 }

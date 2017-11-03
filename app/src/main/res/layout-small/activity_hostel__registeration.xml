@@ -96,7 +96,6 @@
                     android:focusableInTouchMode="true"
                     android:text="Name *"
                     android:textSize="8dp" />
-
                 <EditText
                     android:id="@+id/editTextusername"
                     android:layout_width="match_parent"
@@ -126,7 +125,6 @@
                     android:layout_marginTop="20dp"
                     android:text="Mobile number1 *"
                     android:textSize="8dp" />
-
                 <EditText
                     android:id="@+id/editTextmobile1"
                     android:layout_width="match_parent"
@@ -146,7 +144,6 @@
                     android:text="9764200290"
                     android:textColor="#bcbcbc"
                     android:textSize="15dp" />
-
                 <TextView
                     android:id="@+id/txtmobilenumber2"
                     android:layout_width="wrap_content"
@@ -156,7 +153,6 @@
                     android:layout_marginTop="20dp"
                     android:text="Mobile number2 *"
                     android:textSize="8dp" />
-
                 <EditText
                     android:id="@+id/editTextmobile2"
                     android:layout_width="match_parent"
@@ -220,7 +216,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp">
-
                 <TextView
                     android:id="@+id/txthosteldetails"
                     android:layout_width="wrap_content"
@@ -230,7 +225,6 @@
                     android:text="Hostel Details"
                     android:textColor="@color/black"
                     android:textSize="10dp" />
-
                 <TextView
                     android:id="@+id/txthostelname"
                     android:layout_width="wrap_content"
@@ -240,7 +234,6 @@
                     android:layout_marginStart="5dp"
                     android:text="Hostel name *"
                     android:textSize="8dp" />
-
                 <EditText
                     android:id="@+id/editTexthostelname"
                     android:layout_width="match_parent"
@@ -257,7 +250,6 @@
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
                     android:textColor="#bcbcbc" />
-
                 <TextView
                     android:id="@+id/txtaddress"
                     android:layout_width="wrap_content"
@@ -268,7 +260,6 @@
                     android:layout_marginTop="10dp"
                     android:text="Address *"
                     android:textSize="8dp" />
-
                 <EditText
                     android:id="@+id/editTextaddress"
                     android:layout_width="match_parent"
@@ -327,7 +318,6 @@
                     android:layout_marginTop="13dp"
                     android:text="Price *"
                     android:textSize="8dp" />
-
                 <EditText
                     android:id="@+id/editTextprice"
                     android:layout_width="match_parent"
@@ -345,7 +335,6 @@
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
                     android:textColor="#bcbcbc" />
-
                 <TextView
                     android:id="@+id/textvacancy"
                     android:layout_width="wrap_content"
@@ -356,7 +345,6 @@
                     android:layout_marginTop="15dp"
                     android:text="Vacancy *"
                     android:textSize="8dp" />
-
                 <EditText
                     android:id="@+id/editTextvacancy"
                     android:layout_width="match_parent"
@@ -385,7 +373,6 @@
                     android:layout_marginTop="15dp"
                     android:text="Type *"
                     android:textSize="8dp" />
-
                 <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
@@ -435,7 +422,6 @@
                     android:paddingTop="5dp"
                     android:text="Gender *"
                     android:textSize="8dp" />
-
                 <RadioGroup
                     android:id="@+id/radioGroup"
                     android:layout_width="wrap_content"
@@ -457,7 +443,6 @@
                         android:inputType="textAutoComplete"
                         android:text="Girls"
                         android:textSize="6dp" />
-
                     <RadioButton
                         android:id="@+id/male"
                         android:layout_width="wrap_content"
@@ -466,7 +451,6 @@
                         android:inputType="textAutoComplete"
                         android:text="Boys"
                         android:textSize="6dp" />
-
                     <RadioButton
                         android:id="@+id/coed"
                         android:layout_width="wrap_content"
@@ -1007,7 +991,6 @@
 
             </RelativeLayout>
         </android.support.v7.widget.CardView>
-
         <Button
             android:id="@+id/button1"
             android:layout_width="match_parent"

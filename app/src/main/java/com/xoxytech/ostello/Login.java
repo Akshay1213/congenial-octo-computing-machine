@@ -49,7 +49,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button login_button;
     private RelativeLayout layoutcheckInternetConnection;
     private Button btnRetry;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

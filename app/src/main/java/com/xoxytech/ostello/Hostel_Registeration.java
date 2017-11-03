@@ -55,7 +55,7 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
     int flag = 0, f, fs = 0, name_length, i = 0;
     RequestQueue queue;
     String url;
-    TextView location1;
+    //TextView location1;
     String s, name1;
     int serverResponseCode = 0;
     String provider;
@@ -108,13 +108,14 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
         togglewifi = (ToggleButton) findViewById(R.id.toggleWifi);
         togglemess = (ToggleButton) findViewById(R.id.toggleMess);
         mobilenumber1 = (TextView) findViewById(R.id.txtmobilenumber1);
-        location1 = (TextView) findViewById(R.id.txtlocation);
+        // location1 = (TextView) findViewById(R.id.txtlocation);
         SharedPreferences sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         final String username = sp.getString("USER_NAME", null);
         Log.d("Name", username);
         String number = sp.getString("USER_PHONE", null);
         editText_ownername.setText(username);
         txtmobilenumber1.setText(number);
+
 
 
         findViewById(R.id.getAddress).setOnClickListener(new View.OnClickListener() {
@@ -146,69 +147,70 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (CheckInternet.checkinternet(getApplicationContext())) {
 
-                editText_ownername.setText("John");
+                    //editText_ownername.setText("John");
 
-                sname = textname.getText().toString() + " ";
-                smobilenumber1 = txtmobilenumber1.getText().toString() + " ";
-                smobilenumber2 = txtmobilenumber2.getText().toString() + " ";
-                scity = textCity.getText().toString().replaceAll(" ", "_") + " ";
-                stype = type.getSelectedItem().toString() + " ";
-                sgender = ((RadioButton) findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString() + " ";
-                shostelname = texthostelname.getText().toString() + " ";
-                shostelname = shostelname.replaceAll(" ", "_");
-                saddress = texthosteladdr.getText().toString() + " ";
-                saddress = saddress.replaceAll(" ", "_");
-                saddress = saddress.replaceAll("\n", "_");
-                sprice = textprice.getText().toString() + " ";
-                svacancy = textvacancy.getText().toString() + " ";
+                    sname = textname.getText().toString() + " ";
+                    smobilenumber1 = txtmobilenumber1.getText().toString() + " ";
+                    smobilenumber2 = txtmobilenumber2.getText().toString() + " ";
+                    scity = textCity.getText().toString().replaceAll(" ", "_") + " ";
+                    stype = type.getSelectedItem().toString() + " ";
+                    sgender = ((RadioButton) findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString() + " ";
+                    shostelname = texthostelname.getText().toString() + " ";
+                    shostelname = shostelname.replaceAll(" ", "_");
+                    saddress = texthosteladdr.getText().toString() + " ";
+                    saddress = saddress.replaceAll(" ", "_");
+                    saddress = saddress.replaceAll("\n", "_");
+                    sprice = textprice.getText().toString() + " ";
+                    svacancy = textvacancy.getText().toString() + " ";
 
-                i = 0;
-                while (i < shostelname.length()) {
-                    if (shostelname.charAt(i) == '$') {
-                        texthostelname.setError("use of $ is not allowed!");
-                        f = 9;
-                        flag = 1;
+                    i = 0;
+                    while (i < shostelname.length()) {
+                        if (shostelname.charAt(i) == '$') {
+                            texthostelname.setError("use of $ is not allowed!");
+                            f = 9;
+                            flag = 1;
+                        }
+                        i++;
                     }
-                    i++;
-                }
 
 
-                i = 0;
-                while (i < saddress.length()) {
-                    if (saddress.charAt(i) == '$' || saddress.charAt(i) == '&') {
-                        texthosteladdr.setError("use of $,& is not allowed!");
-                        f = 10;
-                        flag = 1;
+                    i = 0;
+                    while (i < saddress.length()) {
+                        if (saddress.charAt(i) == '$' || saddress.charAt(i) == '&') {
+                            texthosteladdr.setError("use of $,& is not allowed!");
+                            f = 10;
+                            flag = 1;
 
+                        }
+                        i++;
                     }
-                    i++;
-                }
 
-                i = 0;
-                while (i < scity.length()) {
-                    if (scity.charAt(i) == '$' || scity.charAt(i) == '&') {
-                        textCity.setError("use of $,& is not allowed!");
-                        f = 11;
-                        flag = 1;
+                    i = 0;
+                    while (i < scity.length()) {
+                        if (scity.charAt(i) == '$' || scity.charAt(i) == '&') {
+                            textCity.setError("use of $,& is not allowed!");
+                            f = 11;
+                            flag = 1;
 
+                        }
+                        i++;
                     }
-                    i++;
-                }
 
 
-                if (textname.getText().toString().length() == 0) {
-                    textname.setError("First name is required!");
-                    flag = 1;
-                    f = 1;
-                }
+                    if (textname.getText().toString().length() == 0) {
+                        textname.setError("First name is required!");
+                        flag = 1;
+                        f = 1;
+                    }
 
 
-                if (txtmobilenumber1.getText().toString().length() == 0) {
-                    txtmobilenumber1.setError("Mobile number is required!");
-                    flag = 1;
-                    f = 2;
-                }
+                    if (txtmobilenumber1.getText().toString().length() == 0) {
+                        txtmobilenumber1.setError("Mobile number is required!");
+                        flag = 1;
+                        f = 2;
+                    }
 
                /* if (txtmobilenumber2.getText().toString().length() == 0) {
                     txtmobilenumber2.setError("Mobile number is required!");
@@ -221,140 +223,140 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
                     txtmobilenumber2.requestFocus();
                     flag = 1;
                 }*/
-                if (txtmobilenumber2.getText().toString().length() != 0 && txtmobilenumber2.getText().toString().length() != 10) {
-                    txtmobilenumber2.setError("Mobile number should be 10 digit!");
-                    txtmobilenumber2.requestFocus();
-                    flag = 1;
-                    fs = 1;
-                } else
-                    smobilenumber2 = "null";
+                    if (txtmobilenumber2.getText().toString().length() != 0 && txtmobilenumber2.getText().toString().length() != 10) {
+                        txtmobilenumber2.setError("Mobile number should be 10 digit!");
+                        txtmobilenumber2.requestFocus();
+                        flag = 1;
+                        fs = 1;
+                    } else
+                        smobilenumber2 = "null";
 
 
-                if (textCity.getText().toString().length() == 0) {
-                    textCity.setError("City is required!");
-                    flag = 1;
-                    f = 4;
-                }
+                    if (textCity.getText().toString().length() == 0) {
+                        textCity.setError("City is required!");
+                        flag = 1;
+                        f = 4;
+                    }
 
 
-                if (texthostelname.getText().toString().length() == 0) {
-                    texthostelname.setError("Hostel name is required!");
-                    flag = 1;
-                    f = 5;
-                }
+                    if (texthostelname.getText().toString().length() == 0) {
+                        texthostelname.setError("Hostel name is required!");
+                        flag = 1;
+                        f = 5;
+                    }
 
-                if (texthosteladdr.getText().toString().length() == 0) {
-                    texthosteladdr.setError("Hostel address is required!");
-                    flag = 1;
-                    f = 6;
-                }
+                    if (texthosteladdr.getText().toString().length() == 0) {
+                        texthosteladdr.setError("Hostel address is required!");
+                        flag = 1;
+                        f = 6;
+                    }
 
-                if (textprice.getText().toString().length() == 0) {
-                    textprice.setError("Price is required!");
-                    flag = 1;
-                    f = 7;
-                }
+                    if (textprice.getText().toString().length() == 0) {
+                        textprice.setError("Price is required!");
+                        flag = 1;
+                        f = 7;
+                    }
 
-                if (textvacancy.getText().toString().length() == 0) {
-                    textvacancy.setError("vacancy is required!");
-                    flag = 1;
-                    f = 8;
-                }
+                    if (textvacancy.getText().toString().length() == 0) {
+                        textvacancy.setError("vacancy is required!");
+                        flag = 1;
+                        f = 8;
+                    }
 
-                togglestatus = " ";
-                if (toggleelevator.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    togglestatus = " ";
+                    if (toggleelevator.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (toggledrinkingwater.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    if (toggledrinkingwater.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (togglecot.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    if (togglecot.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (togglecctv.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    if (togglecctv.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (toggleac.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    if (toggleac.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (toggleelectricity.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    if (toggleelectricity.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (togglegym.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    if (togglegym.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (togglehotwater.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    if (togglehotwater.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (toggletv.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    if (toggletv.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (togglecleaning.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    if (togglecleaning.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (toggleparking.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
-                if (togglewashingmachine.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    if (toggleparking.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
+                    if (togglewashingmachine.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (togglemess.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    if (togglemess.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (togglestudytable.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
+                    if (togglestudytable.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
-                if (togglewifi.isChecked())
-                    togglestatus += "1";
-                else
-                    togglestatus += "0";
-
-
-                if (flag == 0) {
-
-                    StringRequest postrequest = new StringRequest(Request.Method.POST, url + "?phone=" + smobilenumber1.trim() + "&secondaryphone=" + smobilenumber2.trim() + "&hostel_name=" + shostelname.trim() + "&category=" + stype.trim() + "&vacancy=" + svacancy.trim() + "&rate=" + sprice.trim() + "&address=" + saddress.trim() + "&city=" + scity.trim() + "&type=" + sgender.trim() + "&facilities=" + togglestatus.trim() + "&location=" + lat + "," + lag, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-
-                            Log.d("*****", url + "?phone=" + smobilenumber1.trim() + "&secondaryphone=" + smobilenumber2.trim() + "&hostel_name=" + shostelname.trim() + "&category=" + sgender.trim() + "&vacancy=" + svacancy.trim() + "&rate=" + sprice.trim() + "&address=" + saddress.trim() + "&city=" + scity.trim() + "&type=" + stype.trim() + "&facilities=" + togglestatus.trim() + "&location=" + lat + "," + lag);
+                    if (togglewifi.isChecked())
+                        togglestatus += "1";
+                    else
+                        togglestatus += "0";
 
 
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.d("***", error.toString());
+                    if (flag == 0) {
 
-                        }
-                    });
-                    queue.add(postrequest);
+                        StringRequest postrequest = new StringRequest(Request.Method.POST, url + "?phone=" + smobilenumber1.trim() + "&secondaryphone=" + smobilenumber2.trim() + "&hostel_name=" + shostelname.trim() + "&category=" + stype.trim() + "&vacancy=" + svacancy.trim() + "&rate=" + sprice.trim() + "&address=" + saddress.trim() + "&city=" + scity.trim() + "&type=" + sgender.trim() + "&facilities=" + togglestatus.trim() + "&location=" + lat + "," + lag, new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                                Log.d("*****", url + "?phone=" + smobilenumber1.trim() + "&secondaryphone=" + smobilenumber2.trim() + "&hostel_name=" + shostelname.trim() + "&category=" + sgender.trim() + "&vacancy=" + svacancy.trim() + "&rate=" + sprice.trim() + "&address=" + saddress.trim() + "&city=" + scity.trim() + "&type=" + stype.trim() + "&facilities=" + togglestatus.trim() + "&location=" + lat + "," + lag);
+
+
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.d("***", error.toString());
+
+                            }
+                        });
+                        queue.add(postrequest);
 
                    /*AlertDialog.Builder builder1 = new AlertDialog.Builder(Hostel_Registeration.this);
                     builder1.setMessage("hostel registered successfully! To upload images Pls contact ostallohostels@gmail.com");
@@ -374,81 +376,85 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
                     builder1.setContentView(R.layout.dialog);
                     dialog.setCancelMessage((Message) R.string.dialog_text);
 */
-                    // txtmobilenumber1.getText().clear();
+                        // txtmobilenumber1.getText().clear();
 
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(Hostel_Registeration.this);
-                    LayoutInflater inflater = Hostel_Registeration.this.getLayoutInflater();
-                    alertDialog.setView(inflater.inflate(R.layout.dialog, null));
-                    alertDialog.setMessage("Hostel Register Successfully. To upload hostel images contact ostallohostels@gmail.com ");
-                    alertDialog.setPositiveButton(
-                            "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    toggleelevator.setChecked(false);
-                                    toggledrinkingwater.setChecked(false);
-                                    togglecot.setChecked(false);
-                                    togglecctv.setChecked(false);
-                                    toggleac.setChecked(false);
-                                    toggleelectricity.setChecked(false);
-                                    togglegym.setChecked(false);
-                                    togglehotwater.setChecked(false);
-                                    toggletv.setChecked(false);
-                                    togglecleaning.setChecked(false);
-                                    toggleparking.setChecked(false);
-                                    togglewashingmachine.setChecked(false);
-                                    togglemess.setChecked(false);
-                                    togglestudytable.setChecked(false);
-                                    togglewifi.setChecked(false);
-                                    type.setSelection(0);
-                                    txtmobilenumber2.getText().clear();
-                                    texthostelname.getText().clear();
-                                    texthosteladdr.getText().clear();
-                                    textCity.getText().clear();
-                                    textprice.getText().clear();
-                                    textvacancy.getText().clear();
-                                    togglestatus = "";
-                                }
-                            });
-                    alertDialog.show();
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Hostel_Registeration.this);
+                        LayoutInflater inflater = Hostel_Registeration.this.getLayoutInflater();
+                        alertDialog.setView(inflater.inflate(R.layout.dialog, null));
+                        alertDialog.setMessage("Hostel Register Successfully. To upload hostel images contact ostallohostels@gmail.com ");
+                        alertDialog.setPositiveButton(
+                                "OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        toggleelevator.setChecked(false);
+                                        toggledrinkingwater.setChecked(false);
+                                        togglecot.setChecked(false);
+                                        togglecctv.setChecked(false);
+                                        toggleac.setChecked(false);
+                                        toggleelectricity.setChecked(false);
+                                        togglegym.setChecked(false);
+                                        togglehotwater.setChecked(false);
+                                        toggletv.setChecked(false);
+                                        togglecleaning.setChecked(false);
+                                        toggleparking.setChecked(false);
+                                        togglewashingmachine.setChecked(false);
+                                        togglemess.setChecked(false);
+                                        togglestudytable.setChecked(false);
+                                        togglewifi.setChecked(false);
+                                        type.setSelection(0);
+                                        txtmobilenumber2.getText().clear();
+                                        texthostelname.getText().clear();
+                                        texthosteladdr.getText().clear();
+                                        textCity.getText().clear();
+                                        textprice.getText().clear();
+                                        textvacancy.getText().clear();
+                                        togglestatus = "";
+                                    }
+                                });
+                        alertDialog.show();
 
 
-                } else {
+                    } else {
                     /*if (f == 3)
                         txtmobilenumber2.requestFocus();*/
 
-                    if (f == 4)
-                        textCity.requestFocus();
+                        if (f == 4)
+                            textCity.requestFocus();
 
-                    if (f == 5)
-                        texthostelname.requestFocus();
+                        if (f == 5)
+                            texthostelname.requestFocus();
 
-                    if (f == 6)
-                        texthosteladdr.requestFocus();
+                        if (f == 6)
+                            texthosteladdr.requestFocus();
 
-                    if (f == 7)
-                        textprice.requestFocus();
+                        if (f == 7)
+                            textprice.requestFocus();
 
-                    if (f == 8)
-                        textvacancy.requestFocus();
-                    if (f == 9)
-                        texthostelname.requestFocus();
-                    if (f == 10)
-                        texthosteladdr.requestFocus();
+                        if (f == 8)
+                            textvacancy.requestFocus();
+                        if (f == 9)
+                            texthostelname.requestFocus();
+                        if (f == 10)
+                            texthosteladdr.requestFocus();
 
-                    if (f == 11)
-                        textCity.requestFocus();
+                        if (f == 11)
+                            textCity.requestFocus();
 
                    /* if (txtmobilenumber2.getText().toString().length() < 10) {
                         txtmobilenumber2.setError("Mobile number should be 10 digit!");
                         txtmobilenumber2.requestFocus();
                     }*/
-                    flag = 0;
+                        flag = 0;
+                    }
+                } else {
+                    Toast.makeText(Hostel_Registeration.this, "Make sure you have Active Internet Connection", Toast.LENGTH_LONG).show();
                 }
 
             }
 
         });
+
 
 
     }
@@ -461,7 +467,7 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
                 String result = data.getStringExtra("result");
                 texthosteladdr.setText(result.split("\\$")[0]);
                 Toast.makeText(Hostel_Registeration.this, "" + result, Toast.LENGTH_LONG).show();
-                location1.setText(result.split("\\$")[1]);
+                //location1.setText(result.split("\\$")[1]);
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result
@@ -474,7 +480,7 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
     public void onLocationChanged(Location location) {
 
 
-        location1.setText("" + location.getLatitude() + "," + location.getLongitude());
+        // location1.setText("" + location.getLatitude() + "," + location.getLongitude());
 
         lat = location.getLatitude();
         lag = location.getLongitude();

@@ -6,7 +6,6 @@
     android:layout_height="fill_parent"
     android:focusableInTouchMode="true"
     tools:context="com.xoxytech.ostello.Registeration">
-
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -16,15 +15,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="15dp"
             android:orientation="vertical"
             android:paddingLeft="24dp"
             android:paddingRight="24dp">
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="350sp"
-                android:layout_height="350sp"
+                android:layout_width="200sp"
+                android:layout_height="200sp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="0sp"
                 android:layout_weight="0"
@@ -40,7 +39,7 @@
                 <EditText
                     android:id="@+id/editTextUsername"
                     android:layout_width="250sp"
-                    android:layout_height="60sp"
+                    android:layout_height="50sp"
                     android:background="@drawable/round"
                     android:gravity="center"
                     android:hint="Full Name"
@@ -69,7 +68,7 @@
                 <EditText
                     android:id="@+id/editTextPhone"
                     android:layout_width="250sp"
-                    android:layout_height="60sp"
+                    android:layout_height="50sp"
                     android:background="@drawable/round"
                     android:gravity="center"
                     android:hint="Mobile Number"
@@ -89,7 +88,7 @@
                 <EditText
                     android:id="@+id/editTextPassword"
                     android:layout_width="250sp"
-                    android:layout_height="60sp"
+                    android:layout_height="50sp"
                     android:background="@drawable/round"
                     android:gravity="center"
                     android:hint="@string/prompt_password"
@@ -130,7 +129,6 @@
                 android:gravity="center"
                 android:text="@string/alreadyhaveanAccount"
                 android:textSize="15sp" />
-
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"

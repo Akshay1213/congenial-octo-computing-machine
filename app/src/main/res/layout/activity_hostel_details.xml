@@ -722,7 +722,6 @@
 
 
         </android.support.v7.widget.CardView>
-
         <android.support.v7.widget.CardView
             android:id="@+id/mapscard"
             android:layout_width="match_parent"

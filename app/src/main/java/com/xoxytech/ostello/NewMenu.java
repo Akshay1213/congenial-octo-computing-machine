@@ -190,6 +190,7 @@ public class NewMenu extends Activity {
         }
 
 
+
         mSearchView.swapSuggestions(cities);
         mSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
@@ -209,6 +210,7 @@ public class NewMenu extends Activity {
 
                 mSearchView.hideProgress();
             }
+
 
 
         });
@@ -348,7 +350,6 @@ public class NewMenu extends Activity {
             }
         }
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -484,9 +485,8 @@ public class NewMenu extends Activity {
         }
 
     }
-
     private class AsyncFetchLoadHostels extends AsyncTask<String, String, String> {
-
+        ProgressDialog pdLoading = new ProgressDialog(NewMenu.this);
         HttpURLConnection conn;
         URL url = null;
 
@@ -495,10 +495,9 @@ public class NewMenu extends Activity {
             super.onPreExecute();
 
             //this method will be running on UI thread
-            loading = new ProgressDialog(NewMenu.this);
-            loading.setMessage("\tLoading...");
-            loading.setCancelable(false);
-            loading.show();
+            pdLoading.setMessage("\tLoading...");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
 
         }
 
@@ -572,7 +571,7 @@ public class NewMenu extends Activity {
 
             //this method will be running on UI thread
             Log.d("*******************", result);
-            loading.dismiss();
+            pdLoading.dismiss();
             data = new ArrayList<>();
             try {
 

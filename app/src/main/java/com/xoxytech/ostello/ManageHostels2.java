@@ -91,6 +91,7 @@ public class ManageHostels2 extends AppCompatActivity {
         editText_ownername.setText(username);
         txtmobilenumber1.setText(number);
 
+
         type = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(ManageHostels2.this, R.array.type, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -107,6 +108,7 @@ public class ManageHostels2 extends AppCompatActivity {
         b = getIntent().getExtras();
         String name = b.getString("data");
         String arr[] = name.split("\\|");
+
 
         editText_ownername.setText(username);
         txtmobilenumber1.setText(number);
