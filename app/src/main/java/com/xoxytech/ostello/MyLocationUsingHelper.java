@@ -79,6 +79,7 @@ public class MyLocationUsingHelper extends AppCompatActivity implements Connecti
 
                 if (tvAddress.getVisibility() == View.VISIBLE) {
                     intent.putExtra("address", tvAddress.getText().toString().trim());
+                    //intent.putExtra("location", latitude+" "+longitude);
                     setResult(RESULT_OK, intent);
                     finish();
                 } else

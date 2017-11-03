@@ -41,7 +41,7 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
     protected LocationManager locationManager;
     protected LocationListener locationListener;
     protected Context context;
-    protected String latitude, longitude;
+   // protected String latitude, longitude;
     protected boolean gps_enabled, network_enabled;
     EditText editText_ownername;
     Button submit;
@@ -56,16 +56,19 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
     RequestQueue queue;
     String url;
     //TextView location1;
-    String s, name1;
+    String s, name1,location;
     int serverResponseCode = 0;
     String provider;
-    double lat, lag;
+    double latitude,lat,lag;
+    double longitude;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_hostel__registeration);
+
 
         //SharedPreferences sp = getSharedPreferences("YourSharedPreference",Activity.MODE_PRIVATE);
         // final String username= sp.getString("USER_NAME",null);
@@ -341,11 +344,11 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
 
                     if (flag == 0) {
 
-                        StringRequest postrequest = new StringRequest(Request.Method.POST, url + "?phone=" + smobilenumber1.trim() + "&secondaryphone=" + smobilenumber2.trim() + "&hostel_name=" + shostelname.trim() + "&category=" + stype.trim() + "&vacancy=" + svacancy.trim() + "&rate=" + sprice.trim() + "&address=" + saddress.trim() + "&city=" + scity.trim() + "&type=" + sgender.trim() + "&facilities=" + togglestatus.trim() + "&location=" + lat + "," + lag, new Response.Listener<String>() {
+                        StringRequest postrequest = new StringRequest(Request.Method.POST, url + "?phone=" + smobilenumber1.trim() + "&secondaryphone=" + smobilenumber2.trim() + "&hostel_name=" + shostelname.trim() + "&category=" + stype.trim() + "&vacancy=" + svacancy.trim() + "&rate=" + sprice.trim() + "&address=" + saddress.trim() + "&city=" + scity.trim() + "&type=" + sgender.trim() + "&facilities=" + togglestatus.trim() + "&location=" + location, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
 
-                                Log.d("*****", url + "?phone=" + smobilenumber1.trim() + "&secondaryphone=" + smobilenumber2.trim() + "&hostel_name=" + shostelname.trim() + "&category=" + sgender.trim() + "&vacancy=" + svacancy.trim() + "&rate=" + sprice.trim() + "&address=" + saddress.trim() + "&city=" + scity.trim() + "&type=" + stype.trim() + "&facilities=" + togglestatus.trim() + "&location=" + lat + "," + lag);
+                                Log.d("*****", url + "?phone=" + smobilenumber1.trim() + "&secondaryphone=" + smobilenumber2.trim() + "&hostel_name=" + shostelname.trim() + "&category=" + sgender.trim() + "&vacancy=" + svacancy.trim() + "&rate=" + sprice.trim() + "&address=" + saddress.trim() + "&city=" + scity.trim() + "&type=" + stype.trim() + "&facilities=" + togglestatus.trim() + "&location=" +location);
 
 
                             }
@@ -357,26 +360,6 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
                             }
                         });
                         queue.add(postrequest);
-
-                   /*AlertDialog.Builder builder1 = new AlertDialog.Builder(Hostel_Registeration.this);
-                    builder1.setMessage("hostel registered successfully! To upload images Pls contact ostallohostels@gmail.com");
-                    builder1.setCancelable(true);
-                    builder1.setPositiveButton(
-                            "Ok",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
-                    final AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                    alert11.getWindow().setLayout(900,400);*/
-                    /*AlertDialog.Builder builder1 = new AlertDialog.Builder(Hostel_Registeration.this);
-                       final Dialog dialog=new Dialog(Hostel_Registeration.this);
-                    builder1.setContentView(R.layout.dialog);
-                    dialog.setCancelMessage((Message) R.string.dialog_text);
-*/
-                        // txtmobilenumber1.getText().clear();
 
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Hostel_Registeration.this);
                         LayoutInflater inflater = Hostel_Registeration.this.getLayoutInflater();
@@ -416,8 +399,6 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
 
 
                     } else {
-                    /*if (f == 3)
-                        txtmobilenumber2.requestFocus();*/
 
                         if (f == 4)
                             textCity.requestFocus();
@@ -441,10 +422,7 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
                         if (f == 11)
                             textCity.requestFocus();
 
-                   /* if (txtmobilenumber2.getText().toString().length() < 10) {
-                        txtmobilenumber2.setError("Mobile number should be 10 digit!");
-                        txtmobilenumber2.requestFocus();
-                    }*/
+
                         flag = 0;
                     }
                 } else {
@@ -465,9 +443,12 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
         if (requestCode == 100) {
             if (resultCode == Activity.RESULT_OK) {
                 String result = data.getStringExtra("result");
+                //String location=data.getStringExtra("location");
                 texthosteladdr.setText(result.split("\\$")[0]);
                 Toast.makeText(Hostel_Registeration.this, "" + result, Toast.LENGTH_LONG).show();
                 //location1.setText(result.split("\\$")[1]);
+                location=result.split("\\$")[1];
+                Log.d("location",location);
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result
@@ -483,6 +464,7 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
         // location1.setText("" + location.getLatitude() + "," + location.getLongitude());
 
         lat = location.getLatitude();
+        Log.d("location",location.getLatitude()+"");
         lag = location.getLongitude();
 
     }

@@ -151,7 +151,7 @@ public class Favourite extends AppCompatActivity {
                     Datahostel hostelData = new Datahostel();
                     hostelData.HostelImage = "http://ostallo.com/ostello/images/" + json_data.getString("hostel_id") + "/home.jpg";
                     Log.d("******->", "http://ostallo.com/ostello/images/" + json_data.getString("hostel_id") + "/home.jpg");
-                    hostelData.HostelName = json_data.getString("hostelname");
+                    hostelData.HostelName = json_data.getString("hostelname").replace("_"," ");
                     hostelData.HostelImage = hostelData.HostelImage.replace('_', ' ');
                     hostelData.catName = json_data.getString("category");
                     hostelData.type = json_data.getString("type");

@@ -426,7 +426,7 @@ public class HostelDetails extends AppCompatActivity implements OnMapReadyCallba
                 // Extract data from json and store into ArrayList as class objects
                 for (int i = 0; i < jArray.length(); i++) {
                     JSONObject json_data = jArray.getJSONObject(i);
-                    textViewhostelName.setText(json_data.getString("hostelname"));
+                    textViewhostelName.setText(json_data.getString("hostelname").replace("_"," "));
 //                    textViewhostelName.setTypeface(EasyFonts.caviarDreamsBold(HostelDetails.this));
                     String hostelname[] = textViewhostelName.getText().toString().split("_|\\ ");
                     StringBuilder tmpstr = new StringBuilder();
