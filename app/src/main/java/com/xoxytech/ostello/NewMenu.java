@@ -486,7 +486,7 @@ public class NewMenu extends Activity {
     }
 
     private class AsyncFetchLoadHostels extends AsyncTask<String, String, String> {
-        ProgressDialog pdLoading = new ProgressDialog(NewMenu.this);
+
         HttpURLConnection conn;
         URL url = null;
 
@@ -495,10 +495,10 @@ public class NewMenu extends Activity {
             super.onPreExecute();
 
             //this method will be running on UI thread
-            ProgressDialog pdLoading = new ProgressDialog(NewMenu.this);
-            pdLoading.setMessage("\tLoading...");
-            pdLoading.setCancelable(false);
-            pdLoading.show();
+            loading = new ProgressDialog(NewMenu.this);
+            loading.setMessage("\tLoading...");
+            loading.setCancelable(false);
+            loading.show();
 
         }
 
@@ -572,7 +572,7 @@ public class NewMenu extends Activity {
 
             //this method will be running on UI thread
             Log.d("*******************", result);
-            pdLoading.dismiss();
+            loading.dismiss();
             data = new ArrayList<>();
             try {
 
