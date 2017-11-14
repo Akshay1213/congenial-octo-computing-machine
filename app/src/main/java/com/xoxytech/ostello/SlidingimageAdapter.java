@@ -46,16 +46,11 @@ public class SlidingimageAdapter extends PagerAdapter {
 
         assert imageLayout != null;
         final ImageView imageView = (ImageView) imageLayout.findViewById(R.id.imageview);
-
-
-        //imageView.setImageResource(imageModelArrayList.get(position).getImage_drawable());
-        //imageView.setImageDrawable(Drawable.createFromPath(imageModelArrayList.get(position).getImage_drawable()));
         Glide.with(context).load(imageModelArrayList.get(position).getImage_drawable())
                 .placeholder(R.drawable.sorryimagenotavailable)
                 .error(R.drawable.sorryimagenotavailable)
                 .into(imageView);
         view.addView(imageLayout, 0);
-        //Glide.with(this).load(imageView.setImageDrawable(Drawable.createFromPath(imageModelArrayList.get(position).getImage_drawable()))).into(R.layout.slidingimage);
 
         return imageLayout;
     }

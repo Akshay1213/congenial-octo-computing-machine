@@ -55,57 +55,6 @@ public class ManageHostels extends AppCompatActivity {
         number = sp.getString("USER_PHONE", null);
         Log.d("phone", number);
         dialog = new ProgressDialog(ManageHostels.this);
-
-       /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    final int position, long id) {
-               {
-                    RequestQueue queue = Volley.newRequestQueue(ManageHostels.this);
-
-                    StringRequest getrequest = new StringRequest(Request.Method.GET, url + "?phone=" + number, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-
-                            try {
-
-                                jArray = new JSONArray(response);
-
-                                json_data = jArray.getJSONObject(position);
-
-                                data = json_data.getString("hostelname")+" | ";
-                                data += json_data.getString("category")+" | ";
-                                data += json_data.getString("vacancy")+" | ";
-                                data += json_data.getString("rate")+" | ";
-                                data += json_data.getString("address")+" |";
-                                data += json_data.getString("city")+" |";
-                                data += json_data.getString("type")+" |";
-                                data += json_data.getString("facilities")+" |";
-                                data += json_data.getString("hostel_id");
-
-
-
-                                Intent intent = new Intent(ManageHostels.this, ManageHostels2.class);
-                                intent.putExtra("data", data);
-                                startActivity(intent);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.d("Error.Response", error.toString());
-
-                        }
-                    });
-                    queue.add(getrequest);
-                }
-
-            }
-        });*/
         load_data();
 
     }

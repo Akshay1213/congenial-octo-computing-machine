@@ -427,7 +427,6 @@ public class HostelDetails extends AppCompatActivity implements OnMapReadyCallba
                 for (int i = 0; i < jArray.length(); i++) {
                     JSONObject json_data = jArray.getJSONObject(i);
                     textViewhostelName.setText(json_data.getString("hostelname").replace("_"," "));
-//                    textViewhostelName.setTypeface(EasyFonts.caviarDreamsBold(HostelDetails.this));
                     String hostelname[] = textViewhostelName.getText().toString().split("_|\\ ");
                     StringBuilder tmpstr = new StringBuilder();
                     for (i = 1; i < hostelname.length; i++) {
@@ -436,57 +435,26 @@ public class HostelDetails extends AppCompatActivity implements OnMapReadyCallba
                     String text = "<font color='red'>" + hostelname[0] + " " + "</font>" + tmpstr;
                     textViewhostelName.setText(Html.fromHtml(text),TextView.BufferType.SPANNABLE);
 
-                    textViewcategory.setText(json_data.getString("category"));
-                    textViewType.setText(json_data.getString("type"));
-                    textViewrate.setText(json_data.getString("rate"));
-                    textViewaddress.setText(json_data.getString("address").replace('_', ' '));
-
-                    textViewcity.setText(json_data.getString("city"));
-                    textViewvacancies.setText(json_data.getString("vacancy"));
-                    inittoggle_facilities(json_data.getString("facilities"));
+                    textViewcategory.setText(json_data.getString("category").trim());
+                    textViewType.setText(json_data.getString("type").trim());
+                    textViewrate.setText(json_data.getString("rate").trim());
+                    textViewaddress.setText(json_data.getString("address").replace('_', ' ').trim());
+                    textViewcity.setText(json_data.getString("city").trim());
+                    textViewvacancies.setText(json_data.getString("vacancy").trim());
+                    inittoggle_facilities(json_data.getString("facilities").trim());
                     String s[] = json_data.getString("location").split(",");
                     LatLng hostelmarker = new LatLng(Double.parseDouble(s[0]), Double.parseDouble(s[1]));
                     mMap.addMarker(new MarkerOptions().position(hostelmarker).title(textViewhostelName.getText().toString()));
                     mMap.addMarker(new MarkerOptions().position(hostelmarker).title("Marker " + json_data.getString("address")));
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(hostelmarker));
-//                    hostelData.HostelImage= "https://upload.wikimedia.org/wikipedia/commons/e/e8/Hostel_Dormitory.jpg";
                     RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.layouthostelcontainer);
                     relativeLayout.setVisibility(View.VISIBLE);
-                   /* Animation animation = AnimationUtils.loadAnimation(HostelDetails.this, R.anim.slide_in_right);
-                    int x = 300;
-                    animation.setStartOffset(x);
-                    // animation.setDuration(500);
-                    Animation animation1 = AnimationUtils.loadAnimation(HostelDetails.this, R.anim.slide_in_right);
-                    animation1.setStartOffset(x + 200);
-                    // animation1.setDuration(500);
-                    Animation animation2 = AnimationUtils.loadAnimation(HostelDetails.this, R.anim.slide_in_right);
-                    animation2.setStartOffset(x + 400);
-                    //  animation2.setDuration(500);
-                    Animation animation3 = AnimationUtils.loadAnimation(HostelDetails.this, R.anim.slide_in_right);
-                    animation3.setStartOffset(x + 600);
-                    // animation3.setDuration(500);
-                    Animation animation4 = AnimationUtils.loadAnimation(HostelDetails.this, R.anim.slide_in_right);
-                    animation4.setStartOffset(x + 900);
-                    Animation animation5 = AnimationUtils.loadAnimation(HostelDetails.this, R.anim.slide_in_right);
-                    animation5.setStartOffset(x + 1100);
-                    Animation animation6 = AnimationUtils.loadAnimation(HostelDetails.this, R.anim.slide_in_right);
-                    animation6.setStartOffset(x + 1300);
-                    // animation4.setDuration(500);
 
-                    textViewhostelName.setAnimation(animation);
-                    cardSliderlayout.startAnimation(animation1);
-                    cardDetailslayout.startAnimation(animation2);
-                    cardFeatures.startAnimation(animation3);
-                    cardMaps.startAnimation(animation4);
-                    cardDesc.startAnimation(animation5);
-                    btnEnquiry.startAnimation(animation6);
-*/
                 }
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(HostelDetails.this, "Error" + e.toString(), Toast.LENGTH_LONG).show();
             }
-
         }
 
     }

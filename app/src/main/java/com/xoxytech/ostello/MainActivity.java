@@ -152,8 +152,6 @@ public class MainActivity extends AppCompatActivity
                 ActivityOptions options = ActivityOptions.makeCustomAnimation(MainActivity.this, R.anim.filteropenanim, R.anim.filteropenanim);
                 startActivity(new Intent(MainActivity.this, Contactus.class), options.toBundle());
 
-//                Snackbar.make(view, "Contact Us", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
             }
         });
 
@@ -375,10 +373,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     public boolean onActivityBackPress() {
-        //if mSearchView.setSearchFocused(false) causes the focused search
-        //to close, then we don't want to close the activity. if mSearchView.setSearchFocused(false)
-        //returns false, we know that the search was already closed so the call didn't change the focus
-        //state and it makes sense to call supper onBackPressed() and close the activity
 
         return true;
     }
@@ -402,9 +396,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
         mSearchView.setSearchBarTitle(cities.get(id).getBody());
         mSearchView.clearSearchFocus();
@@ -585,7 +577,6 @@ public class MainActivity extends AppCompatActivity
                         SharedPreferences sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sp.edit();
                         editor.putString("USER_NAME", name[1]);
-                        // Log.d("@@@",name[1]);//username the user has entered
                         editor.commit();
                     }
                 },
@@ -595,8 +586,7 @@ public class MainActivity extends AppCompatActivity
 
                         if (error == null || error.networkResponse == null)
                             return;
-//                            Toast.makeText(Registeration.this, "ohh god error   ", Toast.LENGTH_LONG).show();
-//                        Toast.makeText(Registeration.this, error.getMessage(), Toast.LENGTH_LONG).show();
+
                         String body;
                         Log.d("response", error.getMessage());
                         //get status code here
@@ -604,7 +594,7 @@ public class MainActivity extends AppCompatActivity
                         try {
 
                             body = new String(error.networkResponse.data, "UTF-8");
-//                            Toast.makeText(Registeration.this, body, Toast.LENGTH_LONG).show();
+
                         } catch (UnsupportedEncodingException e) {
                             // exception
                         }
@@ -635,8 +625,7 @@ public class MainActivity extends AppCompatActivity
             btnRetry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                       /* Log.d("wth","nope I got executed");
-                        Boolean res=checkInternet();*/
+
                     if (CheckInternet.checkinternet(getApplicationContext())) {
                         startActivity(I);
                         relativeLayoutNoInternetCon.setVisibility(View.INVISIBLE);
@@ -712,8 +701,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onPageSelected(int position) {
                 currentPage = position;
-//                Toast.makeText(MainActivity.this,"position changed "+(position%(NUM_PAGES)),Toast.LENGTH_LONG).show();
-
             }
 
             @Override

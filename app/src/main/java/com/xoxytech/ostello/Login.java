@@ -142,13 +142,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         loading.dismiss();
                         Log.d("*******", response.toString());
                         try {
-//                            Toast.makeText(Login.this, "atleast got response"+response, Toast.LENGTH_LONG).show();
-                            Log.d("wtf", response);
-                            //Creating the json object from the response
-//                            JSONObject jsonResponse = new JSONObject(response);
 
-                            //If it is success
-                            //if(jsonResponse.getString(Config.TAG_RESPONSE).equalsIgnoreCase("Success")){
+                            Log.d("wtf", response);
+
                             if (!response.contains("Invalid phone number or password")) {
                                 //Asking user to confirm otp
                                 SharedPreferences sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
@@ -207,8 +203,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 return super.getParams();
             }
         };
-
-//        Toast.makeText(Registeration.this, stringRequest.toString(), Toast.LENGTH_LONG).show();
         //Adding request the the queue
         requestQueue.add(stringRequest);
     }

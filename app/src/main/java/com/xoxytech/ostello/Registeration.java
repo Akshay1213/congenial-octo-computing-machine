@@ -279,11 +279,6 @@ public class Registeration extends AppCompatActivity implements View.OnClickList
                             try {
 //                                Toast.makeText(Registeration.this, response, Toast.LENGTH_LONG).show();
                                 Log.d("wtf", response);
-                                //Creating the json object from the response
-//                            JSONObject jsonResponse = new JSONObject(response);
-
-                                //If it is success
-                                //if(jsonResponse.getString(Config.TAG_RESPONSE).equalsIgnoreCase("Success")){
                                 if (response.contains("otp sent")) {
                                     //Asking user to confirm otp
                                     Toast.makeText(Registeration.this, "awaiting for otp", Toast.LENGTH_LONG).show();
@@ -345,7 +340,7 @@ public class Registeration extends AppCompatActivity implements View.OnClickList
                 }
             };
 
-//        Toast.makeText(Registeration.this, stringRequest.toString(), Toast.LENGTH_LONG).show();
+
             //Adding request the the queue
             requestQueue.add(stringRequest);
         } else {

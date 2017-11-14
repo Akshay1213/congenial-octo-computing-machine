@@ -328,54 +328,7 @@ public class ManageHostels2 extends AppCompatActivity {
         });
 
 
-        /*delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(ManageHostels2.this);
-
-                alertDialog.setMessage("Are you want to delete hostel?");
-
-                alertDialog.setPositiveButton(
-                        "YES",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                StringRequest postrequest = new StringRequest(Request.Method.POST, urldelete + "?hostel_id=" + hostel_id.trim(), new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-
-                                        Log.d("*****", urldelete + "?hostel_id=" + hostel_id.trim());
-
-
-                                    }
-                                }, new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        Log.d("***error", urldelete + "?hostel_id=" + hostel_id.trim());
-
-
-                                    }
-                                });
-                                queue1.add(postrequest);
-                                dialog.cancel();
-                                finish();
-                                onBackPressed();
-
-                            }
-                        });
-                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                });
-
-
-                alertDialog.show();
-
-            }
-        });*/
     }
 
     public void validate() {
