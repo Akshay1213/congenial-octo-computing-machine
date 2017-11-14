@@ -393,6 +393,8 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
                                         textprice.getText().clear();
                                         textvacancy.getText().clear();
                                         togglestatus = "";
+                                        Intent intent=new Intent(Hostel_Registeration.this,MainActivity.class);
+                                        startActivity(intent);
                                     }
                                 });
                         alertDialog.show();
@@ -433,8 +435,9 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
 
         });
 
-
-
+       /* Intent intent=new Intent(Hostel_Registeration.this,MainActivity.class);
+        startActivity(intent);
+*/
     }
 
     @Override
