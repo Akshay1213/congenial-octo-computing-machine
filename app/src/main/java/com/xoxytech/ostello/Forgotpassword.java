@@ -83,13 +83,12 @@ public class Forgotpassword extends AppCompatActivity {
 
         alertDialog.show();
 
-
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Hiding the alert dialog
                 if (CheckInternet.checkinternet(getApplicationContext())) {
-                    sendotp();
+                    // sendotp();
 
                     alertDialog.dismiss();
 
@@ -113,12 +112,12 @@ public class Forgotpassword extends AppCompatActivity {
                                     } else {
 
                                         Toast.makeText(Forgotpassword.this, "Wrong OTP Please Try Again", Toast.LENGTH_LONG).show();
-                                      /*  try {
+                                        try {
                                             //Asking user to enter otp again
                                             confirmOtp();
                                         } catch (JSONException e) {
                                             e.printStackTrace();
-                                        }*/
+                                        }
                                     }
                                 }
                             },

@@ -220,7 +220,10 @@ public class NewMenu extends Activity {
         mSearchView.setOnFocusChangeListener(new FloatingSearchView.OnFocusChangeListener() {
             @Override
             public void onFocus() {
-
+                if (CheckInternet.checkinternet(getApplicationContext()))
+                    new AsyncFetch().execute();
+                else
+                    Toast.makeText(NewMenu.this, "Make sure you have Active Internet Connection", Toast.LENGTH_LONG).show();
 
             }
 

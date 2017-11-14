@@ -266,7 +266,6 @@ public class MainActivity extends AppCompatActivity
                 for (CitySuggetions i : cities) {
                     if (i.getBody().contains(currentQuery)) {
                         filteredcities.add(i);
-
                     }
 
                 }
