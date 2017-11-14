@@ -355,7 +355,7 @@
                     android:layout_alignStart="@+id/txtaddress"
                     android:layout_below="@+id/editTextprice"
                     android:layout_marginTop="15dp"
-                    android:text="Vacancy *" />
+                    android:text="Vacancy*" />
                 <EditText
                     android:id="@+id/editTextvacancy"
                     android:layout_width="match_parent"
