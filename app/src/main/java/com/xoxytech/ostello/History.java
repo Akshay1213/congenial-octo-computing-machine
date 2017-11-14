@@ -154,7 +154,7 @@ public class History extends AppCompatActivity {
                     Datahostel hostelData = new Datahostel();
                     hostelData.HostelImage = "http://ostallo.com/ostello/images/" + json_data.getString("hostel_id") + "/home.jpg";
                     Log.d("******->", "http://ostallo.com/ostello/images/" + json_data.getString("hostel_id") + "/home.jpg");
-                    hostelData.HostelName = json_data.getString("hostelname").trim();
+                    hostelData.HostelName = json_data.getString("hostelname").replace('_', ' ').trim();
                     hostelData.HostelImage = hostelData.HostelImage.replace('_', ' ').trim();
                     hostelData.catName = json_data.getString("category").trim();
                     hostelData.type = json_data.getString("type").trim();
