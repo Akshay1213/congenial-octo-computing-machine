@@ -272,9 +272,7 @@
                             android:background="@drawable/togglelift"
                             android:textAlignment="center"
                             android:textOff=""
-                            android:textOn=""
-
-                            />
+                            android:textOn="" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -369,11 +367,13 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_gravity="center"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/cctv"
                             android:textOff=""
-                            android:textOn="" />
+                            android:textOn=""
+
+                            />
 
                         <TextView
                             android:layout_width="50dp"
@@ -441,7 +441,7 @@
                             android:layout_alignStart="@+id/toggleElectricity"
                             android:layout_below="@+id/toggleElectricity"
                             android:layout_gravity="center"
-                            android:paddingLeft="25dp"
+                            android:paddingLeft="20dp"
                             android:text="Electricity" />
                     </LinearLayout>
                 </LinearLayout>
@@ -490,6 +490,7 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_gravity="center"
+                            android:layout_marginLeft="3dp"
                             android:layout_toRightOf="@+id/toggleGym"
                             android:background="@drawable/hot_water"
                             android:textOff=""
@@ -502,7 +503,8 @@
                             android:layout_alignStart="@+id/toggleHotwater"
                             android:layout_below="@+id/toggleHotwater"
                             android:layout_gravity="center"
-                            android:paddingLeft="5dp"
+                            android:layout_marginLeft="3dp"
+                            android:paddingLeft="0dp"
                             android:text="Hot Water" />
                     </LinearLayout>
 
@@ -592,7 +594,7 @@
                             android:layout_alignStart="@+id/toggleParking"
                             android:layout_below="@+id/toggleParking"
                             android:layout_gravity="center"
-                            android:paddingLeft="20dp"
+                            android:paddingLeft="15dp"
                             android:text="Parking" />
                     </LinearLayout>
 
@@ -621,7 +623,7 @@
                             android:layout_alignStart="@+id/toggleWashingmachine"
                             android:layout_below="@+id/toggleWashingmachine"
                             android:layout_gravity="center"
-                            android:paddingLeft="15dp"
+                            android:paddingLeft="20dp"
                             android:text="Washing Machine" />
                     </LinearLayout>
                 </LinearLayout>
@@ -646,6 +648,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
                             android:background="@drawable/mess"
+                            android:layout_marginLeft="2dp"
                             android:textOff=""
                             android:textOn="" />
 
@@ -680,12 +683,12 @@
 
                         <TextView
                             android:id="@+id/txtstudytable"
-                            android:layout_width="70dp"
+                            android:layout_width="80dp"
                             android:layout_height="40dp"
                             android:layout_alignStart="@+id/toggleStudytable"
                             android:layout_below="@+id/toggleStudytable"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginLeft="5dp"
                             android:text="Study table" />
                     </LinearLayout>
 
