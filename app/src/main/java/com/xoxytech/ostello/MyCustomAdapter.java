@@ -96,7 +96,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         SharedPreferences sp = context.getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         number = sp.getString("USER_PHONE", null);
 
-        // deleteBtn.setBackgroundColor(0xFFFF0000);
+
 
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,10 +104,8 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
                 Animation animation1 = AnimationUtils.loadAnimation(context.getApplicationContext(),
                         R.anim.bounce);
                 deleteBtn.startAnimation(animation1);
-                //load_data();
-               /* Animation animation1 = AnimationUtils.loadAnimation(context.getApplicationContext(),
-                        R.anim.bounce);
-                view.startAnimation(animation1);*/
+
+
                 if (CheckInternet.checkinternet(context.getApplicationContext())) {
 
 
@@ -249,65 +247,5 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
 
         return view;
     }
-   /* public void load_data() {
-        RequestQueue queue = Volley.newRequestQueue(context);
-
-
-        StringRequest getrequest = new StringRequest(Request.Method.GET, url + "?phone=" + number, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("Response", response);
-
-                try {
-
-                    jArray = new JSONArray(response);
-
-                    list = new ArrayList<String>(jArray.length());
-
-                    for (i = 0; i < jArray.length(); i++) {
-                        json_data = jArray.getJSONObject(i);
-
-                        list.add(json_data.getString("hostelname").replaceAll("_", " "));
-                        category = json_data.getString("category");
-                        vacancy = json_data.getString("vacancy");
-                        rate = json_data.getString("rate");
-                        address = json_data.getString("address");
-                        city = json_data.getString("city");
-                        type = json_data.getString("type");
-                        facilities = json_data.getString("facilities");
-                        hostel_id = json_data.getString("hostel_id");
-
-                    }
-                    Log.d("list",list+"");
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                if (list != null) {
-                    listView= (ListView)view.findViewById(R.id.listview);
-                    adapter = new MyCustomAdapter(list,context);
-                    listView.setAdapter(adapter);
-                } else {
-
-
-                   view.findViewById(R.id.textViewError).setVisibility(View.VISIBLE);
-                    listView.setVisibility(View.INVISIBLE);
-                    Snackbar.make(view.findViewById(R.id.manage_Hostel_layout), " ", Snackbar.LENGTH_LONG).setAction("Action", null);
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("Error.Response", error.toString());
-
-            }
-        });
-        queue.add(getrequest);
-
-
-    }*/
-
 
 }

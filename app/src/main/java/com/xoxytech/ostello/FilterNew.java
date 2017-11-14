@@ -59,11 +59,8 @@ public class FilterNew extends AppCompatActivity {
         togglewifi = (ToggleButton) findViewById(R.id.toggleWifi);
         rangeSeekbar = (CrystalRangeSeekbar) findViewById(R.id.rangeSeekbar3);
         submit = (Button) findViewById(R.id.btnSubmit);
-        // txt3=(TextView)findViewById(R.id.textView2);
         tvMin = (TextView) findViewById(R.id.txtmin);
         tvMax = (TextView) findViewById(R.id.txtmax);
-        //  b1 = (Button)findViewById(R.id.button);
-
 
         rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
             @Override
@@ -99,9 +96,6 @@ public class FilterNew extends AppCompatActivity {
         };
 
 
-        ///////////////////////////////////////////////
-
-
         toggleelevator.setOnClickListener(bounce);
         toggledrinkingwater.setOnClickListener(bounce);
         togglecot.setOnClickListener(bounce);
@@ -117,9 +111,6 @@ public class FilterNew extends AppCompatActivity {
         togglemess.setOnClickListener(bounce);
         togglestudytable.setOnClickListener(bounce);
         togglewifi.setOnClickListener(bounce);
-
-
-        ///////////////////////////////////////////////////
 
 
         View.OnClickListener toggleListner = new View.OnClickListener() {
@@ -271,13 +262,6 @@ public class FilterNew extends AppCompatActivity {
 
                 price += tvMin.getText().toString() + ",";
                 price += tvMax.getText().toString();
-
-                //Toast.makeText(FilterNew.this,togglestatus+gender+price,Toast.LENGTH_LONG).show();
-
-
-                // togglestatus="";
-                //gender="";
-                //price="";
 
                 Intent intent = new Intent();
                 intent.putExtra("data", togglestatus + "," + gender + "," + price + "," + type.getSelectedItem().toString().trim());

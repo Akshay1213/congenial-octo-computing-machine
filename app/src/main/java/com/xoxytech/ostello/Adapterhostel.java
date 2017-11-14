@@ -68,7 +68,7 @@ public class Adapterhostel extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
         super.onViewAttachedToWindow(holder);
-//
+
         MyHolder myHolder = (MyHolder) holder;
         Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
         int i = holder.getPosition();
@@ -129,13 +129,10 @@ public class Adapterhostel extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
         prevpos = position;
-        //setLikeDislike(myHolder);
-
         myHolder.ivhostel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-//             Toast.makeText(NewMenu.this, "Card at " + position + " is clicked"+tv.getText(), Toast.LENGTH_SHORT).show();
                 if (CheckInternet.checkinternet(context)) {
                     Intent i = new Intent(context, HostelDetails.class);
                     Bundle bundle = new Bundle();
@@ -192,7 +189,7 @@ public class Adapterhostel extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         status = "0";
                         setStatus(status, myHolder);
 
-                        //// TODO: 22/9/17 make derement request to like
+                        //TODO: 22/9/17 make derement request to like
                     }
                 }
                 if (compoundButton == myHolder.toggleDislike && isuser()) {
@@ -204,17 +201,12 @@ public class Adapterhostel extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         status = "-1";
                         setStatus(status, myHolder);
 
-                       /* int imgResource = R.drawable.unlike_active;
-                        myHolder.toggleDislike.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);*/
-
                     } else {
                         myHolder.toggleDislike.setChecked(false);
                         myHolder.textDislikeCount.setText("" + (Integer.parseInt(myHolder.textDislikeCount.getText().toString()) - 1));
                         status = "-2";
                         setStatus(status, myHolder);
 
-                      /*  int imgResource = R.drawable.unlike_inactive;
-                        myHolder.toggleDislike.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);*/
                     }
                 }
                 if (compoundButton == myHolder.toggleFavourite && isuser()) {
@@ -282,15 +274,6 @@ public class Adapterhostel extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
                             Log.d("response", error.getMessage());
-                        //get status code here
-
-                        /*try {
-
-//                            body = new String(error.networkResponse.data, "UTF-8");
-//
-                        } catch (UnsupportedEncodingException e) {
-                            // exception
-                        }*/
                     }
                 }) {
             @Override
@@ -308,8 +291,6 @@ public class Adapterhostel extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public void setStatus(String status1, MyHolder myHolder) {
-
-//            Log.d("Status",Config.UPDATELIKEDISLIKE_URL + "?hostel_id=" + hostel_id + "&phone=" + phone + "&status=" + status1);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.UPDATELIKEDISLIKE_URL + "?hostel_id=" + myHolder.hiddenid.getText() + "&phone=" + phone + "&status=" + status1,
                 new Response.Listener<String>() {

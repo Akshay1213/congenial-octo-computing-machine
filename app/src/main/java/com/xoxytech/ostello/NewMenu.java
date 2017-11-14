@@ -94,11 +94,6 @@ public class NewMenu extends Activity {
                 startActivityForResult(i, FILTER_REQUEST_CODE, options.toBundle());
 
 
-//                Snackbar.make(view, "Filter Applied successfully ", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-
-
-//                Snackbar.make(view, "Filter", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
             }
         });
 
@@ -121,9 +116,6 @@ public class NewMenu extends Activity {
         // Setup and Handover data to recyclerview
         mRVhostelList = (RecyclerView) findViewById(R.id.hostelList);
         mRVhostelList.setVisibility(View.INVISIBLE);
-
-//                LinearLayoutManager llm = new LinearLayoutManager(NewMenu.this);
-//                llm.setOrientation(LinearLayoutManager.VERTICAL);
 
         mAdapter = new Adapterhostel(NewMenu.this, data);
         mRVhostelList.setAdapter(mAdapter);
@@ -193,7 +185,6 @@ public class NewMenu extends Activity {
                 Log.d(TAG, "onSuggestionClicked()");
 
                 mLastQuery = searchSuggestion.getBody();
-                /////////////////Broooooooooooo here we can launch new activity///////////////////////////////
 
                 Intent i = new Intent(NewMenu.this, NewMenu.class);
 
@@ -323,14 +314,11 @@ public class NewMenu extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
         mSearchView.setSearchBarTitle(cities.get(id).getBody());
         mSearchView.clearSearchFocus();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -547,13 +535,13 @@ public class NewMenu extends Activity {
                     Datahostel hostelData = new Datahostel();
                     hostelData.HostelImage = "http://ostallo.com/ostello/images/" + json_data.getString("hostel_id") + "/home.jpg";
                     Log.d("******->", "http://ostallo.com/ostello/images/" + json_data.getString("hostel_id") + "/home.jpg");
-                    hostelData.HostelName = json_data.getString("hostelname").replace("_"," ");
-                    hostelData.HostelImage = hostelData.HostelImage.replace('_', ' ');
-                    hostelData.catName = json_data.getString("category");
-                    hostelData.type = json_data.getString("type");
+                    hostelData.HostelName = json_data.getString("hostelname").replace("_", " ").trim();
+                    hostelData.HostelImage = hostelData.HostelImage.replace('_', ' ').trim();
+                    hostelData.catName = json_data.getString("category").trim();
+                    hostelData.type = json_data.getString("type").trim();
                     hostelData.price = json_data.getInt("rate");
-                    hostelData.id = json_data.getString("hostel_id");
-                    hostelData.facilities = json_data.getString("facilities");
+                    hostelData.id = json_data.getString("hostel_id").trim();
+                    hostelData.facilities = json_data.getString("facilities").trim();
                     hostelData.views = json_data.getInt("views");
                     hostelData.likes = json_data.getInt("likes");
                     hostelData.dislikes = json_data.getInt("dislikes");

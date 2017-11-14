@@ -220,13 +220,12 @@ public class Forgotpassword extends AppCompatActivity {
                         }
                     });
 
-//        Toast.makeText(Registeration.this, stringRequest.toString(), Toast.LENGTH_LONG).show();
-            //Adding request the the queue
             requestQueue.add(stringRequest);
         } else {
             loading.dismiss();
             Toast.makeText(Forgotpassword.this, "Please enter valid Mobile number", Toast.LENGTH_LONG);
         }
+
         loading.dismiss();
     }
 }

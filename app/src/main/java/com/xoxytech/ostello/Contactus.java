@@ -85,16 +85,14 @@ public class Contactus extends AppCompatActivity {
 
                         try {
                             startActivity(Intent.createChooser(intent, "Send Email"));
-                            // Snackbar.make(findViewById(R.id.drawer_layout), "Mail sent", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+
                             Log.d("******", "Finished sending email...");
                         } catch (android.content.ActivityNotFoundException ex) {
                             Toast.makeText(Contactus.this, "Mail not sent", Toast.LENGTH_SHORT).show();
                         }
                     } else
                         Toast.makeText(Contactus.this, "Make sure you have Active Internet Connection", Toast.LENGTH_LONG).show();
-                   /* finally {
-                        finish();
-                    }*/
+
                 }
                 flag = 0;
 

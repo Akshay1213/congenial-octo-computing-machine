@@ -17,7 +17,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.DataOutputStream;
@@ -33,7 +32,6 @@ import java.net.URL;
 public class Uploadhostelimages extends AppCompatActivity {
     ImageView imageView1, imageView2, imageView3, imageView4, imageView5;
     Button bntUpload;
-    TextView messageText;
     int serverResponseCode = 0;
     ProgressDialog dialog = null;
     ProgressDialog dialog1;
@@ -48,13 +46,6 @@ public class Uploadhostelimages extends AppCompatActivity {
             Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
             photoPickerIntent.setType("image/*");
 
-          /*  Animation animation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bounce);
-                imageView1.setAnimation(animation);
-
-            imageView2.setAnimation(animation);
-            imageView3.setAnimation(animation);
-            imageView4.setAnimation(animation);
-            imageView5.setAnimation(animation);*/
             int id = 0;
             if (view == imageView1)
                 id = 1;
@@ -303,8 +294,7 @@ public class Uploadhostelimages extends AppCompatActivity {
                 }
 
                 return null;
-
-            } // End else block
+            }
         }
 
 
@@ -328,7 +318,6 @@ public class Uploadhostelimages extends AppCompatActivity {
             dialog.setMessage("Upload complete");
             dialog.show();
             dialog.dismiss();
-
         }
     }
 }

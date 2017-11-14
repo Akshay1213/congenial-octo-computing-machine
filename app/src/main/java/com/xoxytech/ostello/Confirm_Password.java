@@ -23,7 +23,6 @@ import java.util.Map;
 
 public class Confirm_Password extends AppCompatActivity {
 
-
     int flag = 0;
     String pwd;
     String phone1;

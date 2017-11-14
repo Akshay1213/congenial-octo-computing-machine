@@ -41,7 +41,6 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
     protected LocationManager locationManager;
     protected LocationListener locationListener;
     protected Context context;
-   // protected String latitude, longitude;
     protected boolean gps_enabled, network_enabled;
     EditText editText_ownername;
     Button submit;
@@ -52,11 +51,10 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
     Spinner type;
     RadioGroup radioGroup;
     ToggleButton toggleelevator, toggledrinkingwater, togglecot, togglecctv, toggleac, toggleelectricity, togglegym, togglehotwater, toggletv, togglecleaning, toggleparking, togglewashingmachine, togglemess, togglestudytable, togglewifi;
-    int flag = 0, f, fs = 0, name_length, i = 0;
+    int flag = 0, f, fs = 0, i = 0;
     RequestQueue queue;
     String url;
-    //TextView location1;
-    String s, name1,location;
+    String location;
     int serverResponseCode = 0;
     String provider;
     double latitude,lat,lag;
@@ -70,8 +68,6 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
         setContentView(R.layout.activity_hostel__registeration);
 
 
-        //SharedPreferences sp = getSharedPreferences("YourSharedPreference",Activity.MODE_PRIVATE);
-        // final String username= sp.getString("USER_NAME",null);
         editText_ownername = (EditText) findViewById(R.id.editTextusername);
 
         queue = Volley.newRequestQueue(Hostel_Registeration.this);
@@ -111,7 +107,6 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
         togglewifi = (ToggleButton) findViewById(R.id.toggleWifi);
         togglemess = (ToggleButton) findViewById(R.id.toggleMess);
         mobilenumber1 = (TextView) findViewById(R.id.txtmobilenumber1);
-        // location1 = (TextView) findViewById(R.id.txtlocation);
         SharedPreferences sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         final String username = sp.getString("USER_NAME", null);
         Log.d("Name", username);
@@ -151,8 +146,6 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
             @Override
             public void onClick(View v) {
                 if (CheckInternet.checkinternet(getApplicationContext())) {
-
-                    //editText_ownername.setText("John");
 
                     sname = textname.getText().toString() + " ";
                     smobilenumber1 = txtmobilenumber1.getText().toString() + " ";
@@ -214,18 +207,6 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
                         flag = 1;
                         f = 2;
                     }
-
-               /* if (txtmobilenumber2.getText().toString().length() == 0) {
-                    txtmobilenumber2.setError("Mobile number is required!");
-                    flag = 1;
-                    f = 3;
-                }
-
-                if (txtmobilenumber2.getText().toString().length() < 10) {
-                    txtmobilenumber2.setError("Mobile number should be 10 digit!");
-                    txtmobilenumber2.requestFocus();
-                    flag = 1;
-                }*/
                     if (txtmobilenumber2.getText().toString().length() != 0 && txtmobilenumber2.getText().toString().length() != 10) {
                         txtmobilenumber2.setError("Mobile number should be 10 digit!");
                         txtmobilenumber2.requestFocus();
@@ -422,7 +403,6 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
                         if (f == 11)
                             textCity.requestFocus();
 
-
                         flag = 0;
                     }
                 } else {
@@ -443,10 +423,8 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
         if (requestCode == 100) {
             if (resultCode == Activity.RESULT_OK) {
                 String result = data.getStringExtra("result");
-                //String location=data.getStringExtra("location");
                 texthosteladdr.setText(result.split("\\$")[0]);
                 Toast.makeText(Hostel_Registeration.this, "" + result, Toast.LENGTH_LONG).show();
-                //location1.setText(result.split("\\$")[1]);
                 location=result.split("\\$")[1];
                 Log.d("location",location);
             }
@@ -459,9 +437,6 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
 
     @Override
     public void onLocationChanged(Location location) {
-
-
-        // location1.setText("" + location.getLatitude() + "," + location.getLongitude());
 
         lat = location.getLatitude();
         Log.d("location",location.getLatitude()+"");

@@ -40,10 +40,8 @@ public class Favourite extends AppCompatActivity {
         setContentView(R.layout.activity_favourite);
         favouriteList = (RecyclerView) findViewById(R.id.favouriteList);
         data = new ArrayList<>();
-        //  favouriteList.setVisibility(View.VISIBLE);
         favouriteList.setLayoutManager(new LinearLayoutManager(Favourite.this));
-        // adapterhostel = new Adapterhostel(Favourite.this, data);
-//        favouriteList.setAdapter(adapterhostel);
+
         new AsyncFetchLoadHostels().execute();
     }
 
@@ -56,7 +54,6 @@ public class Favourite extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            //this method will be running on UI thread
             pdLoading.setMessage("\tLoading...");
             pdLoading.setCancelable(false);
             pdLoading.show();
@@ -67,8 +64,7 @@ public class Favourite extends AppCompatActivity {
         protected String doInBackground(String... params) {
             try {
 
-                // Enter URL address where your json file resides
-                // Even you can make call to php file which returns json data
+
                 SharedPreferences sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
                 phone = sp.getString("USER_PHONE", null);
                 url = new URL(Config.FAVOURITES_URL + "?phone=" + phone);
@@ -151,13 +147,13 @@ public class Favourite extends AppCompatActivity {
                     Datahostel hostelData = new Datahostel();
                     hostelData.HostelImage = "http://ostallo.com/ostello/images/" + json_data.getString("hostel_id") + "/home.jpg";
                     Log.d("******->", "http://ostallo.com/ostello/images/" + json_data.getString("hostel_id") + "/home.jpg");
-                    hostelData.HostelName = json_data.getString("hostelname").replace("_"," ");
-                    hostelData.HostelImage = hostelData.HostelImage.replace('_', ' ');
-                    hostelData.catName = json_data.getString("category");
-                    hostelData.type = json_data.getString("type");
+                    hostelData.HostelName = json_data.getString("hostelname").replace("_", " ").trim();
+                    hostelData.HostelImage = hostelData.HostelImage.replace('_', ' ').trim();
+                    hostelData.catName = json_data.getString("category").trim();
+                    hostelData.type = json_data.getString("type").trim();
                     hostelData.price = json_data.getInt("rate");
-                    hostelData.id = json_data.getString("hostel_id");
-                    hostelData.facilities = json_data.getString("facilities");
+                    hostelData.id = json_data.getString("hostel_id").trim();
+                    hostelData.facilities = json_data.getString("facilities").trim();
                     hostelData.views = json_data.getInt("views");
                     hostelData.likes = json_data.getInt("likes");
                     hostelData.dislikes = json_data.getInt("dislikes");
