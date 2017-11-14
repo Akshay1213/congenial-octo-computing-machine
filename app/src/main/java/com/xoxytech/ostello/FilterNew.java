@@ -274,5 +274,11 @@ public class FilterNew extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.filtercloseanim, R.anim.filtercloseanim);
+    }
+
 
 }
