@@ -75,7 +75,7 @@ public class ManageHostels extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.d("Response", response);
-
+              if(!response.contains("no rows..."))
                 try {
 
                     jArray = new JSONArray(response);
@@ -100,7 +100,15 @@ public class ManageHostels extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+
                 }
+                else {
+                  dialog.dismiss();
+                  findViewById(R.id.textViewError).setVisibility(View.VISIBLE);
+                  findViewById(R.id.listview).setVisibility(View.INVISIBLE);
+                  Snackbar.make(findViewById(R.id.manage_Hostel_layout), "no hostel posted yet ", Snackbar.LENGTH_LONG).setAction("Action", null);
+              }
+
 
                 if (list != null) {
                     MyCustomAdapter adapter = new MyCustomAdapter(list, ManageHostels.this);
@@ -109,7 +117,7 @@ public class ManageHostels extends AppCompatActivity {
                 } else {
                     findViewById(R.id.textViewError).setVisibility(View.VISIBLE);
                     findViewById(R.id.listview).setVisibility(View.INVISIBLE);
-                    Snackbar.make(findViewById(R.id.manage_Hostel_layout), " ", Snackbar.LENGTH_LONG).setAction("Action", null);
+                    Snackbar.make(findViewById(R.id.manage_Hostel_layout), "no hostel posted yet ", Snackbar.LENGTH_LONG).setAction("Action", null);
                 }
 
             }

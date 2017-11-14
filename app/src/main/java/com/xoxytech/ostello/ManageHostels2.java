@@ -270,7 +270,7 @@ public class ManageHostels2 extends AppCompatActivity {
 
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(ManageHostels2.this);
 
-                    alertDialog.setMessage("Hostel update Successfully. ");
+                    alertDialog.setMessage("Hostel updated Successfully. ");
 
                     alertDialog.setPositiveButton(
                             "OK",

@@ -9,7 +9,7 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
         android:orientation="vertical"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
@@ -103,7 +103,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/items_inbetween"
                         android:text="Click here to fetch hostel location"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="18dp" />
 
                 </LinearLayout>

@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -69,7 +70,6 @@ public class Hostel_Registeration extends AppCompatActivity implements LocationL
 
 
         editText_ownername = (EditText) findViewById(R.id.editTextusername);
-
         queue = Volley.newRequestQueue(Hostel_Registeration.this);
         url = "http://ostallo.com/ostello/addhostel.php";
         submit = (Button) findViewById(R.id.button1);

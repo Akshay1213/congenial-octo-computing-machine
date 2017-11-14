@@ -259,6 +259,9 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="10dp"
                     android:foregroundGravity="center"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="@color/white"
+                    android:padding="5dp"
                     android:gravity="center"
                     android:text="click here to Fetch Address "
                     android:textSize="15dp" />
