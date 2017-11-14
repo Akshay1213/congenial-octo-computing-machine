@@ -162,7 +162,6 @@ public class HostelDetails extends AppCompatActivity implements OnMapReadyCallba
                 final TextView txtSecondaryPhone= (TextView) enquireDialog.findViewById(R.id.txtSecondaryPhone);*/
                     Button btnCall = (Button) enquireDialog.findViewById(R.id.buttonCall);
 
-
                     AlertDialog.Builder alert = new AlertDialog.Builder(HostelDetails.this);
                     //Adding our dialog box to the view of alert dialog
                     alert.setView(enquireDialog);

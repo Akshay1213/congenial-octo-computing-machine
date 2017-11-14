@@ -174,7 +174,6 @@ public class History extends AppCompatActivity {
                 e.printStackTrace();
                 Toast.makeText(History.this, "Error " + e.toString(), Toast.LENGTH_LONG).show();
             }
-
         }
     }
 }

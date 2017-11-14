@@ -99,11 +99,13 @@ public class Forgotpassword extends AppCompatActivity {
                     //Getting the user entered otp from edittext
                     final String otp = editTextConfirmOtp.getText().toString().trim();
                     //Creating an string request
+                    Log.d("LOoL", Config.VERIFYOTP_URL + "?phone=" + phone + "&otp=" + otp);
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.VERIFYOTP_URL + "?phone=" + phone + "&otp=" + otp,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
                                     //if the server response is success
+                                    Log.d("LOoL", response);
                                     if (response.contains("OTP verified successfully")) {
                                         Intent intent_confirm_password = new Intent(Forgotpassword.this, Confirm_Password.class);
                                         intent_confirm_password.putExtra("phone", phone);
@@ -111,12 +113,12 @@ public class Forgotpassword extends AppCompatActivity {
                                     } else {
 
                                         Toast.makeText(Forgotpassword.this, "Wrong OTP Please Try Again", Toast.LENGTH_LONG).show();
-                                        try {
+                                      /*  try {
                                             //Asking user to enter otp again
                                             confirmOtp();
                                         } catch (JSONException e) {
                                             e.printStackTrace();
-                                        }
+                                        }*/
                                     }
                                 }
                             },
@@ -157,6 +159,7 @@ public class Forgotpassword extends AppCompatActivity {
 
         String phone = editTextphone.getText().toString().trim();
         if (PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
+            Log.d("Forgot Pass:", Config.FORGOTPASSWORD_URL + "?phone=" + phone);
             //Again creating the string request
             StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.FORGOTPASSWORD_URL + "?phone=" + phone,
                     new Response.Listener<String>() {
